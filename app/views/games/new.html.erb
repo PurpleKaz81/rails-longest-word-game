@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>New Game</h1>
+  <div class="d-flex justify-content-between">
+    <% @letters.each do |letter| %>
+      <div class="btn btn-primary btn-lg float-end mx-3"><%= letter.upcase%></div>
+      <% end %>
+  </div>
+  <form class="mt-3 "action="/score" method="post" data-turbo="false">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <input type="hidden" name="letters" value="<%= @letters.join%>">
+    <input type="text" name="answer">
+    <input type="submit" value="Submit!">
+  </form>
+</div>
